@@ -1,19 +1,20 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-
-int main() {
+int main()
+{
+    // Desafio Super Trunfo - Países
 
     // Declarando as variaveis
 
     char estado, estado2, codigodacarta[4], codigodacarta2[4], nomecidade[20], nomecidade2[20];
-    int populacao, populacao2, pontosturisticos, pontosturisticos2;
+    unsigned long int populacao, populacao2, superpoder1, superpoder2;
+    int pontosturisticos, pontosturisticos2;
     float area, area2, densidadepopulacional, densidadepopulacional2;
     float pib, pib2, pibpercapita, pibpercapita2;
+    int resultadopopulacao, resultadoarea, resultadopib, resultadopontosturisticos, resultadodensidade, resultadorpibpercapita;
+    int resutadosuperpoder;
 
     // Inserindo os dados da carta 1
-
     printf("Insira o Estado: ");
     scanf("%c", &estado);
 
@@ -24,7 +25,7 @@ int main() {
     scanf("%s", &nomecidade);
 
     printf("Insira a população: ");
-    scanf("%d", &populacao);
+    scanf("%lu", &populacao);
 
     printf("Insira a área: ");
     scanf("%f", &area);
@@ -40,14 +41,14 @@ int main() {
     // Calculo de PIB per CApita da carta 1
     pibpercapita = (float)(pib * 1000000000) / populacao;
 
-    // Apresentando os dados inseridos da carta 1
+    // Imprimindo os dados da carta 1
 
     printf("------------------ \n");
     printf("Carta 1: \n");
     printf("Estado: %c \n", estado);
     printf("Código: %s \n", codigodacarta);
     printf("Nome da Cidade: %s \n", nomecidade);
-    printf("População: %d \n", populacao);
+    printf("População: %lu \n", populacao);
     printf("Área: %.2f km² \n", area);
     printf("PIB: %.2f bilhões de reais \n", pib);
     printf("Número de Pontos Turísticos: %d \n", pontosturisticos);
@@ -68,7 +69,7 @@ int main() {
     scanf("%s", &nomecidade2);
 
     printf("Insira a população: ");
-    scanf("%d", &populacao2);
+    scanf("%lu", &populacao2);
 
     printf("Insira a área: ");
     scanf("%f", &area2);
@@ -84,20 +85,45 @@ int main() {
     // Calculo de PIB per CApita da carta 2
     pibpercapita2 = (float)(pib2 * 1000000000) / populacao2;
 
-    // Apresentando os dados inserido da carta 2
-
     printf("------------------ \n");
+
+    // Imprimindo os dados da carta 2
     printf("Carta 2: \n");
     printf("Estado: %c \n", estado2);
     printf("Código: %s \n", codigodacarta2);
     printf("Nome da Cidade: %s \n", nomecidade2);
-    printf("População: %d \n", populacao2);
+    printf("População: %lu \n", populacao2);
     printf("Área: %.2f km² \n", area2);
     printf("PIB: %.2f bilhões de reais \n", pib2);
     printf("Número de Pontos Turísticos: %d \n", pontosturisticos2);
     printf("Densidade Populacional: %.2f hab/km² \n", densidadepopulacional2);
     printf("PIB per Capita: %.2f reais \n", pibpercapita2);
 
-    return 0;
+    // Calculando o super poder
+    superpoder1 = (long double)(populacao + area + pib + pontosturisticos + (densidadepopulacional * -1) + pibpercapita);
+    superpoder2 = (long double)(populacao2 + area2 + pib2 + pontosturisticos2 + (densidadepopulacional2 * -1) + pibpercapita2);
 
+    // Comparando as cartas do super trunfo
+    resultadopopulacao = populacao > populacao2;
+    resultadoarea = area > area2;
+    resultadopib = pib > pib2;
+    resultadopontosturisticos = pontosturisticos > pontosturisticos2;
+    resultadodensidade = densidadepopulacional < densidadepopulacional2;
+    resultadorpibpercapita = pibpercapita > pibpercapita2;
+    resutadosuperpoder = superpoder1 > superpoder2;
+
+    // Imprimindo na tela as comparações
+    printf("------------------ \n");
+    printf("Comparação de Cartas: \n");
+    printf("População: %d\n", resultadopopulacao);
+    printf("Área: %d\n", resultadoarea);
+    printf("PIB: %d\n", resultadopib);
+    printf("Pontos Turísticos: %d\n", resultadopontosturisticos);
+    printf("Densidade Populacional: %d\n", resultadodensidade);
+    printf("PIB per Capita: %d\n", resultadorpibpercapita);
+    printf("Super Poder: %d\n", resutadosuperpoder);
+
+    printf("------------------ \n");
+    printf("FIM");
+    return 0;
 }
